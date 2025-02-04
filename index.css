@@ -29,7 +29,8 @@ body {
 	font-weight: 400;
 }
 
-img {
+img,
+svg {
 	display: block;
 	max-width: 100%;
 }
@@ -67,7 +68,7 @@ img {
 	background-color: var(--shadow);
 }
 
-.header_theme-button:hover img {
+.header_theme-button:hover svg {
 	rotate: 180deg;
 }
 
@@ -129,6 +130,7 @@ img {
 	width: 50px;
 	font-size: 12px;
 	font-weight: 600;
+	border-radius: 5px;
 	color: var(--secondary);
 	transition: background-color 0.1s ease;
 }
@@ -220,6 +222,7 @@ img {
 #buttons_main-btn-plus {
 }
 #buttons_main-btn-0 {
+	grid-column: span 2;
 }
 #buttons_main-btn-point {
 }
