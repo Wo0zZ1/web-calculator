@@ -5,13 +5,206 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="index.css" />
+
+		<!-- Normalize css like base tailwind -->
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.min.css" />
+
+		<!-- Lato font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto&display=swap"
+			rel="stylesheet" />
+
+		<!-- Main styles -->
+		<link rel="stylesheet" href="index.css" />
+
 		<title>Web Calculator</title>
 	</head>
 	<body>
-		<div>Hello world!</div>
+		<main class="calculator">
+			<header class="calculator_header">
+				<button class="header_theme-button">
+					<div class="header_theme-icon">
+						<img src="./assets/sun.svg" alt="Light theme" />
+					</div>
+					<span class="header_theme-content">DAYMODE</span>
+				</button>
+			</header>
+			<output class="calculator_output">
+				<div class="output_history">289 * 9</div>
+				<div class="output_data">2601</div>
+			</output>
+			<div class="calculator_buttons">
+				<div class="buttons_memory">
+					<button
+						id="buttons_memory-btn-clear"
+						class="disabled buttons_memory-btn">
+						MC
+					</button>
+					<button
+						id="buttons_memory-btn-read"
+						class="disabled buttons_memory-btn">
+						MR
+					</button>
+					<button
+						id="buttons_memory-btn-plus"
+						class="buttons_memory-btn">
+						M+
+					</button>
+					<button
+						id="buttons_memory-btn-minus"
+						class="buttons_memory-btn">
+						M-
+					</button>
+					<button
+						id="buttons_memory-btn-set"
+						class="buttons_memory-btn">
+						MS
+					</button>
+				</div>
+				<div class="buttons_main">
+					<button
+						id="buttons_main-btn-delete"
+						class="primary buttons_main-btn">
+						<svg
+							width="24"
+							height="24"
+							viewBox="0 0 16 16"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<g clip-path="url(#clip0_2_725)">
+								<path
+									d="M13.8119 2.91388L5.68694 2.91388L1.31194 7.91388L5.68694 12.9139L13.8119 12.9139C14.1435 12.9139 14.4614 12.7822 14.6958 12.5478C14.9302 12.3133 15.0619 11.9954 15.0619 11.6639L15.0619 4.16388C15.0619 3.83236 14.9302 3.51442 14.6958 3.28C14.4614 3.04558 14.1435 2.91388 13.8119 2.91388V2.91388Z"
+									stroke="currentColor"
+									stroke-width="1.25"
+									stroke-linecap="round"
+									stroke-linejoin="round" />
+								<path
+									d="M11.9369 6.03888L8.18694 9.78888"
+									stroke="currentColor"
+									stroke-width="1.25"
+									stroke-linecap="round"
+									stroke-linejoin="round" />
+								<path
+									d="M8.18694 6.03888L11.9369 9.78888"
+									stroke="currentColor"
+									stroke-width="1.25"
+									stroke-linecap="round"
+									stroke-linejoin="round" />
+							</g>
+							<defs>
+								<clipPath id="clip0_2_725">
+									<rect
+										width="15"
+										height="15"
+										fill="white"
+										transform="translate(0.686935 0.413879)" />
+								</clipPath>
+							</defs>
+						</svg>
+					</button>
+					<button
+						id="buttons_main-btn-sign"
+						class="primary buttons_main-btn">
+						<svg
+							width="24px"
+							height="24px"
+							fill="currentColor"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M20 4L4 20"
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2" />
+							<path
+								d="M4 7H7M10 7H7M7 7V4M7 7V10"
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2" />
+							<path
+								d="M14 17H17H20"
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2" />
+						</svg>
+					</button>
+					<button
+						id="buttons_main-btn-percent"
+						class="primary buttons_main-btn">
+						%
+					</button>
+					<button
+						id="buttons_main-btn-div"
+						class="primary buttons_main-btn">
+						/
+					</button>
+					<button id="buttons_main-btn-7" class="buttons_main-btn">
+						7
+					</button>
+					<button id="buttons_main-btn-8" class="buttons_main-btn">
+						8
+					</button>
+					<button id="buttons_main-btn-9" class="buttons_main-btn">
+						9
+					</button>
+					<button
+						id="buttons_main-btn-mult"
+						class="primary buttons_main-btn">
+						*
+					</button>
+					<button id="buttons_main-btn-4" class="buttons_main-btn">
+						4
+					</button>
+					<button id="buttons_main-btn-5" class="buttons_main-btn">
+						5
+					</button>
+					<button id="buttons_main-btn-6" class="buttons_main-btn">
+						6
+					</button>
+					<button
+						id="buttons_main-btn-minus"
+						class="primary buttons_main-btn">
+						-
+					</button>
+					<button id="buttons_main-btn-1" class="buttons_main-btn">
+						1
+					</button>
+					<button id="buttons_main-btn-2" class="buttons_main-btn">
+						2
+					</button>
+					<button id="buttons_main-btn-3" class="buttons_main-btn">
+						3
+					</button>
+					<button
+						id="buttons_main-btn-plus"
+						class="primary buttons_main-btn">
+						+
+					</button>
+					<button id="buttons_main-btn-0" class="buttons_main-btn">
+						0
+					</button>
+					<button
+						id="buttons_main-btn-point"
+						class="buttons_main-btn">
+						,
+					</button>
+					<button
+						id="buttons_main-btn-equal"
+						class="primary buttons_main-btn">
+						=
+					</button>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>
