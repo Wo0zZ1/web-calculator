@@ -78,9 +78,10 @@ img {
 	border-radius: 100%;
 }
 
-.header_theme-icon img {
+.header_theme-icon svg {
 	width: 24px;
 	height: 24px;
+	color: var(--primary);
 	transition: rotate 0.6s ease;
 }
 
