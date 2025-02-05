@@ -24,8 +24,12 @@
 		<!-- Main styles -->
 		<link rel="stylesheet" href="index.css" />
 
+		<script src="./classes/Calculator.js"></script>
+
+		<script src="./classes/Controls.js"></script>
+		<script defer src="./classes/Memory.js"></script>
+
 		<script defer src="./index.js"></script>
-		<script defer src="./Calculator.js"></script>
 
 		<title>Web Calculator</title>
 	</head>
@@ -117,31 +121,37 @@
 						placeholder="0"
 						spellcheck="false"
 						autocomplete="off"
+						autofocus
 						type="text" />
 				</output>
 				<div class="calculator_buttons">
 					<div class="buttons_memory">
 						<button
+							type="button"
 							id="buttons_memory-btn-clear"
 							class="disabled buttons_memory-btn">
 							MC
 						</button>
 						<button
+							type="button"
 							id="buttons_memory-btn-read"
 							class="disabled buttons_memory-btn">
 							MR
 						</button>
 						<button
+							type="button"
 							id="buttons_memory-btn-plus"
 							class="buttons_memory-btn">
 							M+
 						</button>
 						<button
+							type="button"
 							id="buttons_memory-btn-minus"
 							class="buttons_memory-btn">
 							M-
 						</button>
 						<button
+							type="button"
 							id="buttons_memory-btn-set"
 							class="buttons_memory-btn">
 							MS
