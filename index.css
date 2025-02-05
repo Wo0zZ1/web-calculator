@@ -222,13 +222,9 @@ svg {
 #buttons_main-btn-plus {
 }
 #buttons_main-btn-0 {
-	grid-column: span 2;
+	/* grid-column: span 2; */
 }
 #buttons_main-btn-point {
 }
 #buttons_main-btn-equal {
 }
-
-/**/
-
-/**/
