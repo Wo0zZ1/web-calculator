@@ -2,8 +2,8 @@
 	--primary: #006ff1;
 	--secondary: #374353;
 	--shadow: #ebefff;
-	--hover: rgba(44, 54, 66, 0.15);
-	--active: rgba(44, 54, 66, 0.25);
+	--hover: #2c364226;
+	--active: #2c364240;
 	--alternate: #ababab;
 	--bg: #fafbff;
 }
@@ -60,8 +60,8 @@ svg {
 
 	padding: 5px 7px;
 	border-radius: 45px;
-	box-shadow: inset 2.26px 2.26px 2.26px 0 #ebefff,
-		inset -2.26px -2.26px 2.26px 0 #ffffff;
+	box-shadow: inset 2.26px 2.26px 2.26px 0 var(--shadow),
+		inset -2.26px -2.26px 2.26px 0 var(--shadow);
 	transition: background-color 0.3s;
 }
 
@@ -70,7 +70,7 @@ svg {
 }
 
 .header_theme-button:hover svg {
-	rotate: 180deg;
+	rotate: 260deg;
 }
 
 .header_theme-icon {
