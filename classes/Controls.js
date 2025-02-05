@@ -18,6 +18,8 @@ class Controls {
 
 		this.equal = document.getElementById('buttons_main-btn-equal')
 
+		this.point = document.getElementById('buttons_main-btn-point')
+
 		this.nums = []
 		for (let i = 0; i <= 9; i++)
 			this.nums.push(document.getElementById(`buttons_main-btn-${i}`))
@@ -49,6 +51,9 @@ class Controls {
 		// Nums buttons
 		for (const num of this.nums)
 			num.onclick = this.#createWritableEvent(num.innerText)
+
+		// Point button
+		this.point.onclick = this.#createWritableEvent('.')
 
 		// Math buttons
 		this.plus.onclick = this.#createWritableEvent(' + ')
