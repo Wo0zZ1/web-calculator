@@ -18,6 +18,7 @@ body {
 	min-height: 410px;
 	width: 100svw;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
@@ -86,6 +87,12 @@ svg {
 	transition: rotate 0.6s ease;
 }
 
+.calcualtor_form {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
 .header_theme-content {
 	color: var(--primary);
 	font-weight: 600;
@@ -112,6 +119,12 @@ svg {
 	font-weight: 600;
 	font-size: 32px;
 	color: var(--primary);
+
+	padding: 0;
+	border: none;
+	outline: none;
+	text-align: right;
+	background-color: transparent;
 }
 
 .calculator_buttons {
@@ -189,42 +202,8 @@ svg {
 	color: var(--primary);
 }
 
-#buttons_main-btn-delete {
-}
-#buttons_main-btn-sign {
-}
-#buttons_main-btn-percent {
-}
-#buttons_main-btn-div {
-}
-#buttons_main-btn-7 {
-}
-#buttons_main-btn-8 {
-}
-#buttons_main-btn-9 {
-}
-#buttons_main-btn-mult {
-}
-#buttons_main-btn-4 {
-}
-#buttons_main-btn-5 {
-}
-#buttons_main-btn-6 {
-}
-#buttons_main-btn-minus {
-}
-#buttons_main-btn-1 {
-}
-#buttons_main-btn-2 {
-}
-#buttons_main-btn-3 {
-}
-#buttons_main-btn-plus {
-}
-#buttons_main-btn-0 {
-	/* grid-column: span 2; */
-}
-#buttons_main-btn-point {
-}
-#buttons_main-btn-equal {
+.temp {
+	background-color: red;
+	width: calc(((((12 + 7 * 6) / pow(6, pow(1, 6))) * 1px)));
+	height: 100px;
 }
