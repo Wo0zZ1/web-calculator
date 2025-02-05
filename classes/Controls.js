@@ -87,18 +87,56 @@ class Controls {
 		this.history.onclick = this.#createFocusEvent(() => {
 			const temp = this.output.value
 			this.output.value = this.history.innerText
-			this.history.innerText = temp
+			this.history.innerText = temp === 'ERROR' ? '' : temp
 		})
+
+		this.output.onkeydown = e => {
+			if (e.code !== 'Backspace') return
+			if (this.output.value.includes('ERROR')) {
+				this.output.value = ''
+				e.preventDefault()
+			}
+		}
+
+		this.output.oninput = e => {
+			this.output.value = e.target.value.replaceAll(
+				/[^0-9\+\-\*\/\.\^\(\)\ ]/g,
+				'',
+			)
+		}
 	}
 
 	#erase() {
+		if (this.output.value.includes('ERROR')) this.output.value = ''
 		this.output.value = this.output.value.slice(0, -1)
 	}
 
 	#calculate() {
-		console.log(this.output.value)
-		this.history.innerText = this.output.value
-		const res = Calculator.calc(this.output.value)
-		this.output.value = Number.isNaN(res) ? '' : res
+		let data = this.output.value
+		if (!data) return
+
+		// parsing data
+		data = data
+			.replaceAll(' ', '')
+			.replaceAll('+', ' + ')
+			.replaceAll('-', ' - ')
+			.replaceAll('*', ' * ')
+			.replaceAll('/', ' / ')
+
+		this.history.innerText = data
+
+		const match = /(\d+\.?\d*)\^(\d+\.?\d*)/.exec(data)
+		if (match?.[0]) {
+			data = data.replace(
+				`${match[1]}^${match[2]}`,
+				`pow(${match[1]}, ${match[2]})`,
+			)
+		}
+
+		// parsing data
+		const res = Calculator.calc(data)
+		this.output.value = Number.isNaN(res)
+			? 'ERROR'
+			: res.toLocaleString('en', { useGrouping: false })
 	}
 }

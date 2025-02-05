@@ -111,6 +111,9 @@ svg {
 
 .output_history {
 	cursor: pointer;
+	overflow-x: auto;
+	white-space: nowrap;
+	max-width: 350px;
 	font-weight: 600;
 	font-size: 20px;
 	color: var(--secondary);
