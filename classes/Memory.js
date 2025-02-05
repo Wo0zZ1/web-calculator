@@ -32,17 +32,17 @@ class Memory {
 		})
 
 		this.mplus.onclick = this.#createEvent(() => {
-			if (!this.output.value.match(/^-?[0-9]+$/)) return
+			if (!this.output.value.match(/^-?[0-9]+.?[0-9]+$/)) return
 			this.value = (this.value ?? 0) + parseFloat(this.output.value)
 		})
 
 		this.mminus.onclick = this.#createEvent(() => {
-			if (!this.output.value.match(/^-?[0-9]+$/)) return
+			if (!this.output.value.match(/^-?[0-9]+.?[0-9]+$/)) return
 			this.value = (this.value ?? 0) - parseFloat(this.output.value)
 		})
 
 		this.ms.onclick = this.#createEvent(() => {
-			if (!this.output.value.match(/^-?[0-9]+$/)) return
+			if (!this.output.value.match(/^-?[0-9]+.?[0-9]+$/)) return
 			this.value = parseFloat(this.output.value)
 		})
 	}
