@@ -82,6 +82,13 @@ class Controls {
 			clearTimeout(timeout)
 			this.#erase()
 		})
+
+		// Back to last step
+		this.history.onclick = this.#createFocusEvent(() => {
+			const temp = this.output.value
+			this.output.value = this.history.innerText
+			this.history.innerText = temp
+		})
 	}
 
 	#erase() {
