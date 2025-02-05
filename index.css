@@ -43,9 +43,10 @@ svg {
 	height: 90%;
 	max-height: 650px;
 	aspect-ratio: 9 / 16;
-	background-color: var(--bg);
 	border-radius: 20px;
 	padding: 30px 20px;
+	background-color: var(--bg);
+	transition: background-color 0.2s ease;
 }
 
 .calculator_header {
@@ -62,7 +63,7 @@ svg {
 	border-radius: 45px;
 	box-shadow: inset 2.26px 2.26px 2.26px 0 var(--shadow),
 		inset -2.26px -2.26px 2.26px 0 var(--shadow);
-	transition: background-color 0.3s;
+	transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .header_theme-button:hover {
@@ -74,17 +75,19 @@ svg {
 }
 
 .header_theme-icon {
-	background-color: white;
 	padding: 3px;
-	box-shadow: 2.26px 2.26px 2.26px var(--shadow);
 	border-radius: 100%;
+	background-color: var(--bg);
+	box-shadow: 2.26px 2.26px 2.26px var(--shadow);
+
+	transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .header_theme-icon svg {
 	width: 24px;
 	height: 24px;
 	color: var(--primary);
-	transition: rotate 0.6s ease;
+	transition: rotate 0.6s ease, color 0.2s ease;
 }
 
 .calcualtor_form {
@@ -97,7 +100,9 @@ svg {
 	color: var(--primary);
 	font-weight: 600;
 	font-size: 14px;
-	/* text-transform: uppercase; */
+	text-transform: uppercase;
+
+	transition: width 0.4s ease;
 }
 
 .calculator_output {
@@ -117,6 +122,8 @@ svg {
 	font-weight: 600;
 	font-size: 20px;
 	color: var(--secondary);
+
+	transition: color 0.2s ease;
 }
 
 .output_data {
@@ -149,7 +156,8 @@ svg {
 	font-weight: 600;
 	border-radius: 5px;
 	color: var(--secondary);
-	transition: background-color 0.1s ease;
+
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .buttons_memory-btn.disabled {
@@ -180,13 +188,14 @@ svg {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--bg);
 	border-radius: 10px;
-	box-shadow: -5px -5px 10px var(--shadow), 5px 5px 10px var(--shadow);
 	font-size: 20px;
 	font-weight: 600;
 	color: var(--secondary);
-	transition: background-color 0.2s ease;
+	background-color: var(--bg);
+	box-shadow: -5px -5px 10px var(--shadow), 5px 5px 10px var(--shadow);
+	transition: background-color 0.2s ease, box-shadow 0.2s ease,
+		color 0.2s ease;
 }
 
 .buttons_main-btn:hover {
