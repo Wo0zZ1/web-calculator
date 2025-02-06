@@ -100,7 +100,7 @@ class Controls {
 
 		this.output.oninput = e => {
 			this.output.value = e.target.value.replaceAll(
-				/[^0-9\+\-\*\/\.\^\(\)\ ]/g,
+				/[^0-9\+\-\*\/\.\,\^\(\)\ ]/g,
 				'',
 			)
 		}
@@ -122,10 +122,11 @@ class Controls {
 			.replaceAll('-', ' - ')
 			.replaceAll('*', ' * ')
 			.replaceAll('/', ' / ')
+			.replaceAll(',', '.')
 
 		this.history.innerText = data
 
-		const match = /(\d+\.?\d*)\^(\d+\.?\d*)/.exec(data)
+		const match = /(\d+[\.\,]?\d*)\^(\d+[\.\,]?\d*)/.exec(data)
 		if (match?.[0]) {
 			data = data.replace(
 				`${match[1]}^${match[2]}`,
