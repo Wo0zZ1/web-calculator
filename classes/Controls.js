@@ -32,6 +32,7 @@ class Controls {
 	#createFocusEvent(fn) {
 		return () => {
 			fn()
+			this.copy.classList.add('disabled')
 			if (!isMobile()) this.output.focus()
 		}
 	}
@@ -74,7 +75,6 @@ class Controls {
 		let timeout
 
 		this.delete.onmousedown = () => {
-			this.copy.classList.add('disabled')
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
 				500,

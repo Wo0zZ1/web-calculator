@@ -8,6 +8,10 @@ function copyToClipBoard(str) {
 	else {
 		const temp = document.createElement('input')
 		temp.value = str
+		temp.style.opacity = '0'
+		temp.style.position = 'fixed'
+		temp.style.top = '0'
+		temp.style.left = '0'
 		document.body.appendChild(temp)
 		if (!isMobile()) temp.focus()
 		temp.select()
