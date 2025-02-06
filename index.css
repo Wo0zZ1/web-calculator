@@ -8,6 +8,16 @@
 	--bg: #fafbff;
 }
 
+[data-theme='dark'] {
+	--primary: #93a8fe;
+	--secondary: #ffffff;
+	--shadow: #313d4e;
+	--hover: #2c364245;
+	--active: #2c364260;
+	--alternate: #ababab;
+	--bg: #374353;
+}
+
 /* Reset button styles */
 button {
 	background-color: unset;

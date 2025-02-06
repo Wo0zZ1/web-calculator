@@ -26,6 +26,12 @@
 
 		<script defer src="./utils/index.js"></script>
 
+		<!-- Тема по умолчанию -->
+		<script>
+			const theme = localStorage.getItem('theme') || 'light'
+			document.documentElement.setAttribute('data-theme', theme)
+		</script>
+
 		<script defer src="./store/index.js"></script>
 
 		<script defer src="./classes/Calculator.js"></script>

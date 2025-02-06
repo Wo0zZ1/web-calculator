@@ -1,8 +1,8 @@
 const initialState = {
 	theme: 'light', // "light" | "dark"
-	history: '',
-	output: '',
-	memory: null,
+	history: '', // string
+	output: '', // string
+	memory: null, // number | null
 }
 
 class Store {
