@@ -56,13 +56,13 @@ class Controls {
 		this.point.onclick = this.#createWritableEvent('.')
 
 		// Math buttons
-		this.plus.onclick = this.#createWritableEvent(' + ')
-		this.minus.onclick = this.#createWritableEvent(' - ')
-		this.mult.onclick = this.#createWritableEvent(' * ')
-		this.div.onclick = this.#createWritableEvent(' / ')
+		this.plus.onclick = this.#createWritableEvent('+')
+		this.minus.onclick = this.#createWritableEvent('-')
+		this.mult.onclick = this.#createWritableEvent('*')
+		this.div.onclick = this.#createWritableEvent('/')
 
 		// Pow button
-		this.pow.onclick = this.#createWritableEvent(' ^ ')
+		this.pow.onclick = this.#createWritableEvent('^')
 
 		// Brackets buttons
 		this.open.onclick = this.#createWritableEvent('(')
@@ -115,26 +115,11 @@ class Controls {
 		let data = this.output.value
 		if (!data) return
 
-		// parsing data
-		data = data
-			.replaceAll(' ', '')
-			.replaceAll('+', ' + ')
-			.replaceAll('-', ' - ')
-			.replaceAll('*', ' * ')
-			.replaceAll('/', ' / ')
-			.replaceAll(',', '.')
+		// prettier data
+		data = data.replaceAll(' ', '').replaceAll(',', '.')
 
 		this.history.innerText = data
 
-		const match = /(\d+[\.\,]?\d*)\^(\d+[\.\,]?\d*)/.exec(data)
-		if (match?.[0]) {
-			data = data.replace(
-				`${match[1]}^${match[2]}`,
-				`pow(${match[1]}, ${match[2]})`,
-			)
-		}
-
-		// parsing data
 		const res = Calculator.calc(data)
 		this.output.value = Number.isNaN(res)
 			? 'ERROR'
