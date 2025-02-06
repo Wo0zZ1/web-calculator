@@ -77,7 +77,7 @@ class Controls {
 		this.delete.onmousedown = () => {
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
-				200,
+				350,
 			)
 		}
 
@@ -88,6 +88,7 @@ class Controls {
 
 		// Back to last step
 		this.history.onclick = this.#createFocusEvent(() => {
+			const temp = this.output.value
 			this.output.value = this.history.innerText
 			this.history.innerText = temp === 'ERROR' ? '' : temp
 		})
