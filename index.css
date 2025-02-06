@@ -40,6 +40,7 @@ svg {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	max-width: 90%;
 	height: 90%;
 	max-height: 650px;
 	aspect-ratio: 9 / 16;
