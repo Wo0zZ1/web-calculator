@@ -8,6 +8,7 @@
 	--bg: #fafbff;
 }
 
+/* Reset button styles */
 button {
 	background-color: unset;
 	border: unset;
@@ -22,7 +23,13 @@ body {
 	align-items: center;
 	justify-content: center;
 
-	/* TODO EDIT */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
 	background-color: #627185;
 
 	font-family: 'Lato', system-ui, 'Segoe UI', 'Roboto', Helvetica,

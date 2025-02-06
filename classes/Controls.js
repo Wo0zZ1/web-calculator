@@ -77,7 +77,7 @@ class Controls {
 		this.delete.onmousedown = () => {
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
-				500,
+				200,
 			)
 		}
 
