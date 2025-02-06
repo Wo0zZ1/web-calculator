@@ -47,7 +47,8 @@ class Controls {
 				char +
 				this.output.value.substring(endPos)
 
-			this.output.setSelectionRange(startPos + 1, startPos + 1)
+			if (!isMobile)
+				this.output.setSelectionRange(startPos + 1, startPos + 1)
 
 			const inputEvent = new Event('input', { bubbles: true })
 			this.output.dispatchEvent(inputEvent)
@@ -143,7 +144,7 @@ class Controls {
 				0,
 				startPos === endPos ? startPos - 1 : startPos,
 			) + this.output.value.substring(endPos)
-		this.output.setSelectionRange(startPos, startPos)
+		if (!isMobile()) this.output.setSelectionRange(startPos, startPos)
 	}
 
 	#calculate() {
