@@ -22,8 +22,8 @@ body {
 	align-items: center;
 	justify-content: center;
 
-	/* TODO DELETE */
-	background-color: var(--alternate);
+	/* TODO EDIT */
+	background-color: #627185;
 
 	font-family: 'Lato', system-ui, 'Segoe UI', 'Roboto', Helvetica,
 		Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -47,6 +47,8 @@ svg {
 	border-radius: 20px;
 	padding: 30px 20px;
 	background-color: var(--bg);
+	box-shadow: 3px 4px 30px #0004, 0px 0px 15px #0004;
+
 	transition: background-color 0.2s ease;
 }
 
