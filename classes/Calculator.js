@@ -186,17 +186,17 @@ class Calculator {
 	}
 }
 
-const tests = [
-	'1+2',
-	'2+2*2',
-	'5+-7',
-	'-5-3.5',
-	'(2+2)*2',
-	'2+4^2',
-	'(2.25*4+3^3)^0.5',
-	'2^4',
-]
+// const tests = [
+// 	'1+2',
+// 	'2+2*2',
+// 	'5+-7',
+// 	'-5-3.5',
+// 	'(2+2)*2',
+// 	'2+4^2',
+// 	'(2.25*4+3^3)^0.5',
+// 	'2^4',
+// ]
 
-for (const [i, test] of Object.entries(tests)) {
-	console.log(`Test: ${i}:`, '\n', test, '\n', Calculator.rpn(test))
-}
+// for (const [i, test] of Object.entries(tests)) {
+// 	console.log(`Test: ${i}:`, '\n', test, '\n', Calculator.rpn(test))
+// }
