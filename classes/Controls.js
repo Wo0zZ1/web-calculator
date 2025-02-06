@@ -32,7 +32,7 @@ class Controls {
 	#createFocusEvent(fn) {
 		return () => {
 			fn()
-			this.output.focus()
+			if (!isMobile()) this.output.focus()
 		}
 	}
 
@@ -74,6 +74,7 @@ class Controls {
 		let timeout
 
 		this.delete.onmousedown = () => {
+			this.copy.classList.add('disabled')
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
 				500,
@@ -87,7 +88,6 @@ class Controls {
 
 		// Back to last step
 		this.history.onclick = this.#createFocusEvent(() => {
-			const temp = this.output.value
 			this.output.value = this.history.innerText
 			this.history.innerText = temp === 'ERROR' ? '' : temp
 		})
@@ -113,12 +113,11 @@ class Controls {
 			copyToClipBoard(this.output.value)
 			const text = this.copy.innerText
 			this.copy.innerText = 'Copied!'
-			// this.copy.setAttribute('disabled', 'true')
 			this.copy.disabled = true
 			setTimeout(() => {
 				this.copy.innerText = text
 				this.copy.disabled = false
-			}, 1000)
+			}, 1500)
 		}
 	}
 
