@@ -2,6 +2,8 @@ class Controls {
 	constructor() {
 		this.form = document.getElementById('calculator_form')
 
+		this.copy = document.getElementById('buttons_memory-btn-copy')
+
 		this.history = document.getElementById('output_history')
 		this.output = document.getElementById('output_data')
 
@@ -103,6 +105,20 @@ class Controls {
 				/[^0-9\+\-\*\/\.\,\^\(\)\ ]/g,
 				'',
 			)
+
+			this.copy.classList.add('disabled')
+		}
+
+		this.copy.onclick = e => {
+			copyToClipBoard(this.output.value)
+			const text = this.copy.innerText
+			this.copy.innerText = 'Copied!'
+			// this.copy.setAttribute('disabled', 'true')
+			this.copy.disabled = true
+			setTimeout(() => {
+				this.copy.innerText = text
+				this.copy.disabled = false
+			}, 1000)
 		}
 	}
 
@@ -124,5 +140,8 @@ class Controls {
 		this.output.value = Number.isNaN(res)
 			? 'ERROR'
 			: res.toLocaleString('en', { useGrouping: false })
+
+		if (isNumber(this.output.value))
+			this.copy.classList.remove('disabled')
 	}
 }

@@ -1,6 +1,5 @@
 class ThemeManager {
 	constructor() {
-		this.output = document.getElementById('output_data')
 		this.root = document.documentElement
 
 		this.themeButton = document.getElementById('theme-button')
@@ -39,7 +38,6 @@ class ThemeManager {
 	#createEvent(fn) {
 		return () => {
 			fn()
-			this.output.focus()
 			this.#render()
 		}
 	}

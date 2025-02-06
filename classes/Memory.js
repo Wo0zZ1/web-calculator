@@ -17,7 +17,6 @@ class Memory {
 		return () => {
 			fn()
 			this.#render()
-			this.output.focus()
 		}
 	}
 
@@ -32,20 +31,17 @@ class Memory {
 		})
 
 		this.mplus.onclick = this.#createEvent(() => {
-			if (!this.output.value.match(/^[\-\+]?[0-9]+[\.\,]?[0-9]*$/))
-				return
+			if (!isNumber(this.output.value)) return
 			this.value = (this.value ?? 0) + parseFloat(this.output.value)
 		})
 
 		this.mminus.onclick = this.#createEvent(() => {
-			if (!this.output.value.match(/^[\-\+]?[0-9]+[\.\,]?[0-9]*$/))
-				return
+			if (!isNumber(this.output.value)) return
 			this.value = (this.value ?? 0) - parseFloat(this.output.value)
 		})
 
 		this.ms.onclick = this.#createEvent(() => {
-			if (!this.output.value.match(/^[\-\+]?[0-9]+[\.\,]?[0-9]*$/))
-				return
+			if (!isNumber(this.output.value)) return
 			this.value = parseFloat(this.output.value)
 		})
 	}

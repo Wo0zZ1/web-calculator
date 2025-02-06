@@ -152,13 +152,23 @@ svg {
 
 .buttons_memory-btn {
 	height: 35px;
-	width: 50px;
+	min-width: 50px;
 	font-size: 12px;
 	font-weight: 600;
 	border-radius: 5px;
 	color: var(--secondary);
 
 	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#buttons_memory-btn-copy {
+	font-size: 16px;
+	margin-left: auto;
+	text-transform: uppercase;
+}
+
+#buttons_memory-btn-copy.disabled {
+	display: none;
 }
 
 .buttons_memory-btn.disabled {

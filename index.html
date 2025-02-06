@@ -24,8 +24,9 @@
 		<!-- Main styles -->
 		<link rel="stylesheet" href="index.css" />
 
+		<script defer src="./utils/index.js"></script>
+    
 		<script defer src="./classes/Calculator.js"></script>
-
 		<script defer src="./classes/ThemeManager.js"></script>
 		<script defer src="./classes/Controls.js"></script>
 		<script defer src="./classes/Memory.js"></script>
@@ -143,6 +144,7 @@
 						type="text" />
 				</output>
 				<div class="calculator_buttons">
+					<!-- <div class="calculator_XXX"> -->
 					<div class="buttons_memory">
 						<button
 							type="button"
@@ -174,7 +176,14 @@
 							class="buttons_memory-btn">
 							MS
 						</button>
+						<button
+							type="button"
+							id="buttons_memory-btn-copy"
+							class="buttons_memory-btn disabled">
+							Copy
+						</button>
 					</div>
+					<!-- </div> -->
 					<div class="buttons_main">
 						<button
 							type="button"
