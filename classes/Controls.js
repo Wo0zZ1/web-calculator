@@ -39,7 +39,18 @@ class Controls {
 
 	#createWritableEvent(char) {
 		return this.#createFocusEvent(() => {
-			this.output.value += char
+			let startPos = this.output.selectionStart
+			let endPos = this.output.selectionEnd
+
+			this.output.value =
+				this.output.value.substring(0, startPos) +
+				char +
+				this.output.value.substring(endPos)
+
+			this.output.setSelectionRange(startPos + 1, startPos + 1)
+
+			const inputEvent = new Event('input', { bubbles: true })
+			this.output.dispatchEvent(inputEvent)
 		})
 	}
 
@@ -48,6 +59,7 @@ class Controls {
 		this.form.onsubmit = e => {
 			e.preventDefault()
 			e.stopPropagation()
+			e.stopImmediatePropagation()
 			this.#calculate()
 		}
 
@@ -124,7 +136,14 @@ class Controls {
 
 	#erase() {
 		if (this.output.value.includes('ERROR')) this.output.value = ''
-		this.output.value = this.output.value.slice(0, -1)
+		const startPos = this.output.selectionStart
+		const endPos = this.output.selectionEnd
+		this.output.value =
+			this.output.value.substring(
+				0,
+				startPos === endPos ? startPos - 1 : startPos,
+			) + this.output.value.substring(endPos)
+		this.output.setSelectionRange(startPos, startPos)
 	}
 
 	#calculate() {
@@ -143,5 +162,7 @@ class Controls {
 
 		if (isNumber(this.output.value))
 			this.copy.classList.remove('disabled')
+
+		if (!isMobile()) this.output.focus()
 	}
 }
