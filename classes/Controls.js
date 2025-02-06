@@ -5,7 +5,9 @@ class Controls {
 		this.copy = document.getElementById('buttons_memory-btn-copy')
 
 		this.history = document.getElementById('output_history')
+		this.history.innerText = store.state.history
 		this.output = document.getElementById('output_data')
+		this.output.value = store.state.output
 
 		this.delete = document.getElementById('buttons_main-btn-delete')
 
@@ -30,8 +32,10 @@ class Controls {
 	}
 
 	#createFocusEvent(fn) {
-		return () => {
-			fn()
+		return arg => {
+			fn(arg)
+			store.set('output', this.output.value)
+			store.set('history', this.history.innerText)
 			this.copy.classList.add('disabled')
 			if (!isMobile()) this.output.focus()
 		}
@@ -57,12 +61,10 @@ class Controls {
 
 	#bindEvents() {
 		// Form prevent default & calculate invoke
-		this.form.onsubmit = e => {
+		this.form.onsubmit = this.#createFocusEvent(e => {
 			e.preventDefault()
-			e.stopPropagation()
-			e.stopImmediatePropagation()
 			this.#calculate()
-		}
+		})
 
 		// Nums buttons
 		for (const num of this.nums)
@@ -106,22 +108,14 @@ class Controls {
 			this.history.innerText = temp === 'ERROR' ? '' : temp
 		})
 
-		this.output.onkeydown = e => {
-			if (e.code !== 'Backspace') return
-			if (this.output.value.includes('ERROR')) {
-				this.output.value = ''
-				e.preventDefault()
-			}
-		}
-
-		this.output.oninput = e => {
+		this.output.oninput = this.#createFocusEvent(e => {
 			this.output.value = e.target.value.replaceAll(
 				/[^0-9\+\-\*\/\.\,\^\(\)\ ]/g,
 				'',
 			)
 
 			this.copy.classList.add('disabled')
-		}
+		})
 
 		this.copy.onclick = e => {
 			copyToClipBoard(this.output.value)
@@ -163,7 +157,5 @@ class Controls {
 
 		if (isNumber(this.output.value))
 			this.copy.classList.remove('disabled')
-
-		if (!isMobile()) this.output.focus()
 	}
 }

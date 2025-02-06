@@ -9,8 +9,6 @@ class ThemeManager {
 		this.sun = document.getElementById('theme-icon-sun')
 		this.moon = document.getElementById('theme-icon-moon')
 
-		this.theme = 'light' // "light" | "dark"
-
 		this.themeData = {
 			light: {
 				primary: '#006ff1',
@@ -33,6 +31,8 @@ class ThemeManager {
 		}
 
 		this.#bindEvents()
+
+		this.#render()
 	}
 
 	#createEvent(fn) {
@@ -44,20 +44,21 @@ class ThemeManager {
 
 	#bindEvents() {
 		this.themeButton.onclick = this.#createEvent(() => {
-			if (this.theme === 'light') this.theme = 'dark'
-			else this.theme = 'light'
+			if (store.state.theme === 'light') store.set('theme', 'dark')
+			else store.set('theme', 'light')
 		})
 	}
 
 	#render() {
 		for (const [key, value] of Object.entries(
-			this.themeData[this.theme],
+			this.themeData[store.state.theme],
 		))
 			this.root.style.setProperty(`--${key}`, value)
-		this.sun.style.display = this.theme === 'light' ? 'block' : 'none'
+		this.sun.style.display =
+			store.state.theme === 'light' ? 'block' : 'none'
 		this.moon.style.display =
-			this.theme === 'light' ? 'none' : 'block'
+			store.state.theme === 'light' ? 'none' : 'block'
 		this.themeContent.innerText =
-			this.theme === 'light' ? 'daymode' : 'nightmode'
+			store.state.theme === 'light' ? 'daymode' : 'nightmode'
 	}
 }

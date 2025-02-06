@@ -8,9 +8,9 @@ class Memory {
 		this.mminus = document.getElementById('buttons_memory-btn-minus')
 		this.ms = document.getElementById('buttons_memory-btn-set')
 
-		this.value = null
-
 		this.#bindEvents()
+
+		this.#render()
 	}
 
 	#createEvent(fn) {
@@ -22,32 +22,51 @@ class Memory {
 
 	#bindEvents() {
 		this.mc.onclick = this.#createEvent(() => {
-			this.value = null
+			store.set('memory', null)
 		})
 
 		this.mr.onclick = this.#createEvent(() => {
-			if (this.value === null) return
-			this.output.value += this.value.toString()
+			if (store.state.memory === null) return
+			let startPos = this.output.selectionStart
+			let endPos = this.output.selectionEnd
+
+			this.output.value =
+				this.output.value.substring(0, startPos) +
+				store.state.memory.toString() +
+				this.output.value.substring(endPos)
+
+			if (!isMobile)
+				this.output.setSelectionRange(startPos + 1, startPos + 1)
+
+			const inputEvent = new Event('input', { bubbles: true })
+			this.output.dispatchEvent(inputEvent)
+			store.set('output', this.output.value)
 		})
 
 		this.mplus.onclick = this.#createEvent(() => {
 			if (!isNumber(this.output.value)) return
-			this.value = (this.value ?? 0) + parseFloat(this.output.value)
+			store.set(
+				'memory',
+				(store.state.memory ?? 0) + parseFloat(this.output.value),
+			)
 		})
 
 		this.mminus.onclick = this.#createEvent(() => {
 			if (!isNumber(this.output.value)) return
-			this.value = (this.value ?? 0) - parseFloat(this.output.value)
+			store.set(
+				'memory',
+				(store.state.memory ?? 0) - parseFloat(this.output.value),
+			)
 		})
 
 		this.ms.onclick = this.#createEvent(() => {
 			if (!isNumber(this.output.value)) return
-			this.value = parseFloat(this.output.value)
+			store.set('memory', parseFloat(this.output.value))
 		})
 	}
 
 	#render() {
-		if (this.value !== null) {
+		if (store.state.memory !== null) {
 			this.mc.classList.remove('disabled')
 			this.mr.classList.remove('disabled')
 		} else {
