@@ -24,6 +24,15 @@
 		<!-- Main styles -->
 		<link rel="stylesheet" href="index.css" />
 
+		<!-- Убрать эвенты приближения при двойном касании на мобильных устройствах -->
+		<script>
+			document.addEventListener(
+				'dblclick',
+				e => event.preventDefault(),
+				{ passive: false },
+			)
+		</script>
+
 		<script defer src="./utils/index.js"></script>
 
 		<!-- Тема по умолчанию -->

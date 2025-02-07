@@ -42,6 +42,8 @@ body {
 	-ms-flex-pack: center;
 	justify-content: center;
 
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;

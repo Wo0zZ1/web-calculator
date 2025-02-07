@@ -89,6 +89,7 @@ class Controls {
 		// Delete button
 		let timeout
 
+		// Desktop
 		this.delete.onmousedown = () => {
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
@@ -97,6 +98,19 @@ class Controls {
 		}
 
 		this.delete.onmouseup = this.#createFocusEvent(() => {
+			clearTimeout(timeout)
+			this.#erase()
+		})
+
+		// Mobile
+		this.delete.ontouchstart = () => {
+			timeout = setTimeout(
+				this.#createFocusEvent(() => (this.output.value = '')),
+				350,
+			)
+		}
+
+		this.delete.ontouchend = this.#createFocusEvent(() => {
 			clearTimeout(timeout)
 			this.#erase()
 		})
