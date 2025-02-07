@@ -92,6 +92,12 @@ class Controls {
 		// Desktop
 		this.delete.onmousedown = () => {
 			if (isMobile()) return
+			const notification = new Notification(
+				'Зажми кнопку удаления, чтобы стереть всё!',
+				3000,
+			)
+			notification.show()
+
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
 				350,
@@ -107,6 +113,12 @@ class Controls {
 		// Mobile
 		this.delete.ontouchstart = () => {
 			if (!isMobile()) return
+			const notification = new Notification(
+				'Зажми кнопку удаления, чтобы стереть всё!',
+				3000,
+			)
+			notification.show()
+
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
 				350,
