@@ -51,7 +51,7 @@ class Controls {
 				char +
 				this.output.value.substring(endPos)
 
-			if (!isMobile)
+			if (!isMobile())
 				this.output.setSelectionRange(startPos + 1, startPos + 1)
 
 			const inputEvent = new Event('input', { bubbles: true })
@@ -91,6 +91,7 @@ class Controls {
 
 		// Desktop
 		this.delete.onmousedown = () => {
+			if (isMobile()) return
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
 				350,
@@ -98,12 +99,14 @@ class Controls {
 		}
 
 		this.delete.onmouseup = this.#createFocusEvent(() => {
+			if (isMobile()) return
 			clearTimeout(timeout)
 			this.#erase()
 		})
 
 		// Mobile
 		this.delete.ontouchstart = () => {
+			if (!isMobile()) return
 			timeout = setTimeout(
 				this.#createFocusEvent(() => (this.output.value = '')),
 				350,
@@ -111,6 +114,7 @@ class Controls {
 		}
 
 		this.delete.ontouchend = this.#createFocusEvent(() => {
+			if (!isMobile()) return
 			clearTimeout(timeout)
 			this.#erase()
 		})
@@ -131,6 +135,10 @@ class Controls {
 			this.copy.classList.add('disabled')
 		})
 
+		this.output.onfocus = () => {
+			if (isMobile()) this.output.scrollLeft = this.output.scrollWidth
+		}
+
 		this.copy.onclick = e => {
 			copyToClipBoard(this.output.value)
 			const text = this.copy.innerText
@@ -144,15 +152,17 @@ class Controls {
 	}
 
 	#erase() {
-		if (this.output.value.includes('ERROR')) this.output.value = ''
+		const value = this.output.value
+		if (value.includes('ERROR')) this.output.value = ''
+		if (isMobile()) {
+			this.output.value = value.substring(0, value.length - 1)
+			return
+		}
 		const startPos = this.output.selectionStart
 		const endPos = this.output.selectionEnd
 		this.output.value =
-			this.output.value.substring(
-				0,
-				startPos === endPos ? startPos - 1 : startPos,
-			) + this.output.value.substring(endPos)
-		if (!isMobile()) this.output.setSelectionRange(startPos, startPos)
+			value.substring(0, startPos - 1) + value.substring(endPos)
+		this.output.setSelectionRange(startPos - 1, startPos - 1)
 	}
 
 	#calculate() {

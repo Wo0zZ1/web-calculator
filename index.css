@@ -206,15 +206,13 @@ svg {
 	cursor: pointer;
 	overflow-x: auto;
 	white-space: nowrap;
-	max-width: 350px;
+	max-width: calc(min(100%, 350px));
 	font-weight: 600;
 	font-size: 20px;
 	color: var(--secondary);
 
 	-webkit-transition: color 0.2s ease;
-
 	-o-transition: color 0.2s ease;
-
 	transition: color 0.2s ease;
 }
 
@@ -222,7 +220,7 @@ svg {
 	font-weight: 600;
 	font-size: 32px;
 	color: var(--primary);
-
+	max-width: 100%;
 	padding: 0;
 	border: none;
 	outline: none;
